@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #generatedLetter {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        #letterTemplate {
+            width: 100%;
+            height: 400px; /* Set height to fit A4 size */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-size: 16px; /* Increase font size */
+            line-height: 1.6; /* Increase line height for readability */
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+
+        #printButton {
+            background-color: #008CBA;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #printButton:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Information Form</h1>
+        <form id="userForm">
+            <label for="Firstname">First Name:</label>
+            <input type="text" id="Firstname" name="fname" required>
+
+            <label for="Lastname">Last Name:</label>
+            <input type="text" id="Lastname" name="lname" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" id="accountNumber" name="accountNumber" required>
+
+            <label for="accountType">Account Type:</label>
+            <input type="text" id="accountType" name="accountType" required>
+            
+            <label for="serviceRequest">Service Request:</label>
+            <select id="serviceRequest" name="serviceRequest">
+                <option value="createAccount">Create Account</option>
+                <option value="updateInfo">Update Information</option>
+                <option value="changeMobileNumber">Change Mobile Number</option>
+            </select>
+            
+            <button type="submit">Generate Letter</button>
+        </form>
+        
+        <div id="generatedLetter">
+            <h2>Generated Letter Template</h2>
+            <textarea id="letterTemplate" rows="6" readonly></textarea>
+            <button id="printButton" onclick="printLetter()">Print PDF</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            generateLetter();
+        });
+
+        function generateLetter() {
+            var firstName = document.getElementById('Firstname').value;
+            var lastName = document.getElementById('Lastname').value;
+            var email = document.getElementById('email').value;
+            var accountNumber = document.getElementById('accountNumber').value;
+            var accountType = document.getElementById('accountType').value;
+            var serviceRequest = document.getElementById('serviceRequest').value;
+            
+            var letterTemplate;
+            
+            if (serviceRequest === 'createAccount') {
+                letterTemplate = `Dear Manager,\n\nI, ${firstName} ${lastName}, with email ${email}, sincerely request to create an account of type ${accountType} with account number ${accountNumber}.\n\nSincerely,\n${firstName} ${lastName}`;
+            } else if (serviceRequest === 'updateInfo') {
+                letterTemplate = `Dear Manager,\n\nI, ${firstName} ${lastName}, with email ${email}, sincerely request to update my information for account number ${accountNumber}.\n\nSincerely,\n${firstName} ${lastName}`;
+            } else if (serviceRequest === 'changeMobileNumber') {
+                letterTemplate = `Dear Manager,\n\nI, ${firstName} ${lastName}, with email ${email}, sincerely request to change my mobile number associated with account number ${accountNumber}.\n\nSincerely,\n${firstName} ${lastName}`;
+            }
+            
+            document.getElementById('generatedLetter').style.display = 'block';
+            document.getElementById('letterTemplate').value = letterTemplate;
+        }
+            
+function printLetter() {
+    var firstName = document.getElementById('Firstname').value;
+    var lastName = document.getElementById('Lastname').value;
+    var email = document.getElementById('email').value;
+    var accountNumber = document.getElementById('accountNumber').value;
+    var accountType = document.getElementById('accountType').value;
+    var serviceRequest = document.getElementById('serviceRequest').value;
+    
+    var currentDate = new Date();
+    var formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    
+
+    var letterTemplate;
+    
+    if (serviceRequest === 'createAccount') {
+        letterTemplate = `Dear Manager,<br><br>I, ${firstName} ${lastName}, with email ${email}, sincerely request to create an account of type ${accountType} with account number ${accountNumber}.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    } else if (serviceRequest === 'updateInfo') {
+        letterTemplate = `Dear Manager,<br><br>I, ${firstName} ${lastName}, with email ${email}, sincerely request to update my information for account number ${accountNumber}.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    } else if (serviceRequest === 'changeMobileNumber') {
+        letterTemplate = `Dear Manager,<br><br>I, ${firstName} ${lastName}, with email ${email}, sincerely request to change my mobile number associated with account number ${accountNumber}.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    }
+    
+    // Convert the letter template to PDF and download
+    html2pdf().from(`<div style="font-family: 'Times New Roman', Times, serif, sans-serif; font-size: 12pt; line-height: 1.6;">${letterTemplate}</div>`).set({
+        margin: 1,
+        filename: 'letter_template.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    }).save();
+}
+    </script>
+</body>
+</html>
