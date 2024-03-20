@@ -1,0 +1,10 @@
+DESCRIPTION:
+
+Permit Pal is a web-based system designed to simplify the process of drafting and printing formal letters for various purposes. It offers pre-defined letter templates tailored for banking service requests, municipal service requests (e.g., fixing potholes, road construction), and event permission requests. Users can input their details, select a template, and Permit Pal dynamically generates personalized letters with filled-in information. With a single click, users can generate PDF versions of the letters for saving, printing, or emailing.
+
+TECHNOLOGIES USED:
+HTML5
+CSS3
+JavaScript
+HTML2PDF library
+Web APIs
