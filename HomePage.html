@@ -6,46 +6,177 @@
     <title>Letter Generation Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+
+        .container-fluid {
+            padding: 50px 0;
+        }
+
+        .jumbotron {
+            background-image: url('https://w0.peakpx.com/wallpaper/214/582/HD-wallpaper-classical-music-for-reading-study-and-concentration-dark-academia-playlist-dark-academia-aesthetic.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0;
+            margin-bottom: 0;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .business-name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            opacity: 0.8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .option {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            color: #fff;
+        }
+
+        .option a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: block;
+        }
+
+        .footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .action-buttons button {
+            margin-bottom: 10px;
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            transform: perspective(1px) translateZ(0);
+            background-size: 200% auto;
+            color: white;
+            text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px 0 rgba(65, 131, 196, 0.75);
+        }
+
+        .action-buttons button:hover {
+            transform: translateY(-3px);
+            background-position: right center;
+        }
+
+        .login-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+
+        .about-btn {
+            background: linear-gradient(to right, #3a7bd5, #3a6073);
+        }
+
+        .contact-btn {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+        }
+
+        .profile-btn {
+            background: linear-gradient(to right, #9d50bb, #6e48aa);
+        }
+    </style>
 </head>
 <body>
-    <div class="animation-container">
-        <div class="animation-text">Letters Made Easy</div>
+
+    <div class="action-buttons">
+        <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+        <button class="profile-btn">Profile</button>
+        <button class="about-btn">About Us</button>
+        <button class="contact-btn">Contact Us</button>
     </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="business-name">Letter Generation</h1>
+            <h2 class="display-4" id="welcomeMessage">Welcome to Letter Generation</h2>
+            <p class="lead">Create professional letters easily.</p>
+        </div>
+    </div>
+
     <div class="language-selector">
-        <select id="languageSelect">
+        <select id="languageSelect" class="form-control">
             <option value="en">English</option>
             <option value="kn">ಕನ್ನಡ</option>
             <option value="hi">हिन्दी</option>
-            <!-- Add more language options as needed -->
         </select>
     </div>
-    <div class="container" id="homePage">
-        <h1 class="text-center mb-4">Welcome to Letter Generation</h1>
+
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <div class="option option1 text-center">
-                    <a href="banking.html">Banking Service Requests</a>
+                <div class="option">
+                    <a href="banking.html" id="bankingService">Banking Service Requests</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="option option2 text-center">
-                    <a href="muncipal.html">Municipal Office Requests</a>
+                <div class="option">
+                    <a href="muncipal.html" id="municipalService">Municipal Office Requests</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="option option3 text-center">
-                    <a href="employment.html">Employment Related Letters</a>
+                <div class="option">
+                    <a href="employment.html" id="employmentService">Employment Related Letters</a>
                 </div>
             </div>
             <!-- Add more options as needed -->
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Letter Generation. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
     <script src="language.js"></script>
 </body>
 </html>
+
 
