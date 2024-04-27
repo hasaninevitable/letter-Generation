@@ -146,13 +146,86 @@ var serviceRequest = document.getElementById('serviceRequest').value;
 var letterTemplate;
 
 if (serviceRequest === 'fixPotholes') {
-    letterTemplate = `To Whom It May Concern,\n\nI, ${firstName} ${lastName}, residing at ${address}, would like to request the fixing of potholes in our neighborhood.\n\nSincerely,\n${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,
+
+${currentDate}
+
+I hope this letter finds you well.
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to bring to your attention the deteriorating condition of the roads in our neighborhood.
+
+In recent months, the number of potholes on our streets has increased significantly, posing a risk to pedestrians, cyclists, and motorists alike. 
+
+I kindly request that immediate action be taken to fix these potholes and ensure the safety of everyone in our community.
+
+Your prompt attention to this matter would be greatly appreciated.
+
+Sincerely,
+${firstName} ${lastName}`;
+
 } else if (serviceRequest === 'roadConstruction') {
-    letterTemplate = `To Whom It May Concern,\n\nI, ${firstName} ${lastName}, residing at ${address}, would like to request the construction of a new road in our locality.\n\nSincerely,\n${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,
+
+${currentDate}
+
+I hope this letter finds you well.
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request the construction of a new road in our locality.
+
+As a resident of this area, I have observed that the current road infrastructure is insufficient to accommodate the increasing traffic volume and does not meet the needs of the community.
+
+I kindly request that immediate action be taken to construct a new road to improve accessibility and ensure the safety and convenience of everyone in our neighborhood.
+
+Your prompt attention to this matter would be greatly appreciated.
+
+Sincerely,
+${firstName} ${lastName}`;
+
 } else if (serviceRequest === 'installStreetlights') {
-    letterTemplate = `To Whom It May Concern,\n\nI, ${firstName} ${lastName}, residing at ${address}, would like to request the installation of streetlights on our street for safety reasons.\n\nSincerely,\n${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,
+
+${currentDate}
+
+I hope this letter finds you well.
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request the installation of streetlights on our street for safety reasons.
+
+As a resident of this area, I have noticed that our street is poorly lit, especially during the evening and night. This lack of adequate lighting poses a safety risk to pedestrians, cyclists, and motorists.
+
+I kindly request that immediate action be taken to install streetlights along our street to improve visibility and ensure the safety of everyone in our community.
+
+Your prompt attention to this matter would be greatly appreciated.
+
+Sincerely,
+${firstName} ${lastName}`;
+
 } else if (serviceRequest === 'eventPermission') {
-    letterTemplate = `To Whom It May Concern,\n\nI, ${firstName} ${lastName}, residing at ${address}, would like to request permission for organizing an event in our locality.\n\nSincerely,\n${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,
+
+${currentDate}
+
+I hope this letter finds you well.
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request permission to organize an event in our locality.
+
+The event is intended to [brief description of the event], and it will be socielty friendly.
+
+We assure you that all necessary arrangements will be made to ensure that the event is conducted smoothly and without causing any inconvenience to the residents.
+
+We kindly request your permission and support for organizing this event.
+
+Your prompt attention to this matter would be greatly appreciated.
+
+Sincerely,
+${firstName} ${lastName}`;
 }
 
 document.getElementById('generatedLetter').style.display = 'block';
@@ -172,13 +245,87 @@ var formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', m
 var letterTemplate;
 
 if (serviceRequest === 'fixPotholes') {
-    letterTemplate = `To Whom It May Concern,<br><br>I, ${firstName} ${lastName}, residing at ${address}, would like to request the fixing of potholes in our neighborhood.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,<br><br>
+
+I hope this letter finds you well.<br><br>
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to bring to your attention the deteriorating condition of the roads in our neighborhood.<br><br>
+
+In recent months, the number of potholes on our streets has increased significantly, posing a risk to pedestrians, cyclists, and motorists alike.<br><br>
+
+The deteriorating road conditions not only affect the aesthetics of our neighborhood but also raise concerns about safety and property damage.<br><br>
+
+I kindly request that immediate action be taken to fix these potholes and ensure the safety of everyone in our community.<br><br>
+
+Your prompt attention to this matter would be greatly appreciated.<br><br>
+
+Sincerely,<br>
+${firstName} ${lastName}<br>
+${currentDate}`;
+
 } else if (serviceRequest === 'roadConstruction') {
-    letterTemplate = `To Whom It May Concern,<br><br>I, ${firstName} ${lastName}, residing at ${address}, would like to request the construction of a new road in our locality.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,<br><br>
+
+I hope this letter finds you well.<br><br>
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request the construction of a new road in our locality.<br><br>
+
+As a resident of this area, I have observed that the current road infrastructure is insufficient to accommodate the increasing traffic volume and does not meet the needs of the community.<br><br>
+
+The lack of proper roads not only causes inconvenience to the residents but also affects the overall development and growth of our locality.<br><br>
+
+I kindly request that immediate action be taken to construct a new road to improve accessibility and ensure the safety and convenience of everyone in our neighborhood.<br><br>
+
+Your prompt attention to this matter would be greatly appreciated.<br><br>
+
+Sincerely,<br>
+${firstName} ${lastName}<br>
+${currentDate}`;
+
 } else if (serviceRequest === 'installStreetlights') {
-    letterTemplate = `To Whom It May Concern,<br><br>I, ${firstName} ${lastName}, residing at ${address}, would like to request the installation of streetlights on our street for safety reasons.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,<br><br>
+
+I hope this letter finds you well.<br><br>
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request the installation of streetlights on our street for safety reasons.<br><br>
+
+As a resident of this area, I have noticed that our street is poorly lit, especially during the evening and night. This lack of adequate lighting poses a safety risk to pedestrians, cyclists, and motorists.<br><br>
+
+I kindly request that immediate action be taken to install streetlights along our street to improve visibility and ensure the safety of everyone in our community.<br><br>
+
+Your prompt attention to this matter would be greatly appreciated.<br><br>
+
+Sincerely,<br>
+${firstName} ${lastName}<br>
+${currentDate}`;
+
 } else if (serviceRequest === 'eventPermission') {
-    letterTemplate = `To Whom It May Concern,<br><br>I, ${firstName} ${lastName}, residing at ${address}, would like to request permission for organizing an event in our locality.<br><br>Sincerely,<br>${firstName} ${lastName}`;
+    const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `To Whom It May Concern,<br><br>
+
+I hope this letter finds you well.<br><br>
+
+I, ${firstName} ${lastName}, residing at ${address}, am writing to request permission to organize an event in our locality.<br><br>
+
+The event is intended to [brief description of the event], and it will Society friendly.
+
+We assure you that all necessary arrangements will be made to ensure that the event is conducted smoothly and without causing any inconvenience to the residents.
+
+We kindly request your permission and support for organizing this event.<br><br>
+
+Your prompt attention to this matter would be greatly appreciated.<br><br>
+
+Sincerely,<br>
+${firstName} ${lastName}<br>
+${currentDate}`;
+
 }
 
 // Convert the letter template to PDF and download
