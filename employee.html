@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Letters</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #generatedLetter {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        #letterTemplate {
+            width: 100%;
+            min-height: 200px; /* Set a minimum height */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-size: 16px; /* Increase font size */
+            line-height: 1.6; /* Increase line height for readability */
+            white-space: pre-wrap; /* Preserve line breaks */
+            outline: none; /* Remove default outline */
+            overflow-y: auto; /* Add vertical scroll if needed */
+            background-color: #fff; /* White background */
+        }
+
+        #printButton {
+            background-color: #008CBA;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #printButton:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employment Letters</h1>
+        <form id="userForm">
+            <label for="Firstname">First Name:</label>
+            <input type="text" id="Firstname" name="fname" required>
+
+            <label for="Lastname">Last Name:</label>
+            <input type="text" id="Lastname" name="lname" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="letterType">Select Letter Type:</label>
+            <select id="letterType" name="letterType">
+                <option value="leave">Leave Letter</option>
+                <option value="promotion">Promotion Letter</option>
+                <option value="permit">Permit Letter</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <button type="submit">Generate Letter</button>
+        </form>
+        
+        <div id="generatedLetter">
+            <h2>Generated Letter Template</h2>
+            <div id="letterTemplate" contenteditable="true" spellcheck="false"></div>
+            <button id="printButton" onclick="printLetter()">Print PDF</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            generateLetter();
+        });
+
+        function generateLetter() {
+            var firstName = document.getElementById('Firstname').value;
+            var lastName = document.getElementById('Lastname').value;
+            var email = document.getElementById('email').value;
+            var letterType = document.getElementById('letterType').value;
+            
+            var letterTemplate;
+            
+            if (letterType === 'leave') {
+                const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                letterTemplate = `Dear Manager,
+
+I, ${firstName} ${lastName}, would like to request a leave of absence from work.
+
+I plan to take leave from [start date] to [end date] for [reason for leave].
+
+Please let me know if there is any additional documentation required.
+
+Thank you for your consideration.
+
+Sincerely,
+${firstName} ${lastName}`;
+
+            } else if (letterType === 'promotion') {
+                const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+               
+ letterTemplate = `Dear Manager,
+
+I am writing to formally request a promotion.
+
+I have been with the company for [duration] and have consistently demonstrated [skills/qualities] in my role.
+
+I believe that I have the skills and experience necessary to take on [new position] and contribute positively to the team.
+
+Thank you for considering my request.
+
+Sincerely,
+${firstName} ${lastName}`;
+
+            } else if (letterType === 'permit') {
+                const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+letterTemplate = `Dear Manager,<br><br>
+
+I am writing to request a permit for [reason for permit].
+
+I plan to [activity] on [date] and require a permit for this purpose.
+
+Please let me know if there is any additional information needed.<br><br>
+
+Thank you for your assistance.
+<br><br>
+Sincerely,
+${firstName} ${lastName}
+${currentDate}`;
+
+            }
+            
+            document.getElementById('generatedLetter').style.display = 'block';
+            document.getElementById('letterTemplate').innerText = letterTemplate;
+        }
+            
+        function printLetter() {
+            var letterTemplate = document.getElementById('letterTemplate').innerText;
+
+            var currentDate = new Date();
+            var formattedDate = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Convert the letter template to PDF and download
+            html2pdf().from(`<div style="font-family: 'Times New Roman', Times, serif, sans-serif; font-size: 12pt; line-height: 1.6;">${letterTemplate}</div>`).set({
+                margin: 1,
+                filename: 'letter_template.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            }).save();
+        }
+    </script>
+</body>
+</html>
